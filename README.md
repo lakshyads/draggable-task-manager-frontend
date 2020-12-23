@@ -27,7 +27,19 @@ Follow this link to my github repo [draggable-task-manager-backend](https://gith
 - Fully functional drag and drop functionality for task cards
 - CRUD functionality for both User-boards as well as Task-Cards
 ---
+## Screenshots
 
+![Overview](https://github.com/lakshyads/draggable-task-manager-frontend/tree/master/src/assets/img/overview.png)
+
+![Add User](https://github.com/lakshyads/draggable-task-manager-frontend/tree/master/src/assets/img/addUser.png)
+
+![Add Task](https://github.com/lakshyads/draggable-task-manager-frontend/tree/master/src/assets/img/addTask.png)
+
+![Drag & Drop](https://github.com/lakshyads/draggable-task-manager-frontend/tree/master/src/assets/img/dnd.png)
+
+![Delete User](https://github.com/lakshyads/draggable-task-manager-frontend/tree/master/src/assets/img/deleteUser.png)
+
+---
 ## Project structure
 
 ├───.vscode
