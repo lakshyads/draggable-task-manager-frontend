@@ -30,32 +30,7 @@ Follow this link to my github repo [draggable-task-manager-backend](https://gith
 ## Screenshots
 
 ![Overview](https://github.com/lakshyads/draggable-task-manager-frontend/tree/master/src/assets/img/overview.png)
-
 ![Add User](https://github.com/lakshyads/draggable-task-manager-frontend/tree/master/src/assets/img/addUser.png)
-
 ![Add Task](https://github.com/lakshyads/draggable-task-manager-frontend/tree/master/src/assets/img/addTask.png)
-
 ![Drag & Drop](https://github.com/lakshyads/draggable-task-manager-frontend/tree/master/src/assets/img/dnd.png)
-
 ![Delete User](https://github.com/lakshyads/draggable-task-manager-frontend/tree/master/src/assets/img/deleteUser.png)
-
----
-## Project structure
-
-├───.vscode
-├───public
-└───src
-    ├───components
-    │   ├───CardAddButton
-    │   ├───CardDeleteButton
-    │   ├───CardStatusBadge
-    │   ├───ModalAddEditTask
-    │   ├───ModalAddEditUser
-    │   ├───Task
-    │   └───UserBoard
-    ├───hooks
-    ├───utils
-    └───Views
-        ├───App
-        └───TaskView
-
