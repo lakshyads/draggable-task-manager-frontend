@@ -107,7 +107,10 @@ function TaskView() {
     });
   const handleTaskDelete = () => {
     setContextTaskActionType(actionTypes.delete);
-    toggleTaskModal();
+    backend.remove(taskUrl, contextTask).then((response) => {
+      if (response.success) setDoFetchTasks(true);
+      toggleTaskModal();
+    });
   };
   const handleTaskEdit = () => {
     setContextTaskActionType(actionTypes.update);
@@ -265,7 +268,6 @@ function TaskView() {
                                         setContextTask(task);
                                         handleTaskEdit();
                                       }}
-                                      handleTaskDelete={handleTaskDelete}
                                       toggleIsTaskDone={() => {
                                         //   setContextTask(task);
                                         toggleIsTaskDone(task);
@@ -310,7 +312,6 @@ function TaskView() {
                                         setContextTask(task);
                                         handleTaskEdit();
                                       }}
-                                      handleTaskDelete={handleTaskDelete}
                                       toggleIsTaskDone={() => {
                                         //   setContextTask(task);
                                         toggleIsTaskDone(task);
