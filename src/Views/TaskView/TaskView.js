@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Container, Row, Col, Button } from 'reactstrap';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 // import components
 import UserBoard from '../../components/UserBoard/UserBoard';
 import Task from '../../components/Task/Task';
@@ -145,6 +146,38 @@ function TaskView() {
     toggleTaskModal();
   };
 
+  /*************************************************************************************************************/
+  /**** Handle drag drop controls ******************************************************************************/
+
+  const onDragEnd = (result) => {
+    const { source, destination, draggableId } = result;
+
+    // dropped outside the list
+    if (!destination) {
+      return;
+    }
+
+    if (source.droppableId === destination.droppableId) {
+      // Do nothing, source === dest
+    } else {
+      move(source.droppableId, destination.droppableId, draggableId);
+    }
+  };
+  /**
+   * Moves an item from one user board to another user board.
+   */
+  const move = (sourceUserId, destUserId, taskId) => {
+    let taskToMove = taskList.find((task) => task._id === taskId);
+    if (taskToMove && taskToMove.user === sourceUserId) {
+      taskToMove.user = destUserId;
+    }
+    backend
+      .update(taskUrl, { ...taskToMove, user: destUserId })
+      .then((response) => {
+        if (response.success) setDoFetchTasks(true);
+      });
+  };
+
   /************************************************************************************************************/
   /************************************************************************************************************/
 
@@ -187,76 +220,116 @@ function TaskView() {
           </Button>
         </div>
       </Row>
-      {/* User Boards section */}
-      <Row>
-        {userList &&
-          userList.map((user, index) => (
-            <Col md='6' lg='4' xl='3' key={user._id + index}>
-              <UserBoard
-                user={user}
-                handleUserBoardDelete={handleUserBoardDelete}
-                handleUserBoardEdit={handleUserBoardEdit}
-                setContextUser={setContextUser}
-                handleAddTask={() => {
-                  setContextTask((prev) => ({ ...prev, user: user._id }));
-                  setContextTaskActionType(actionTypes.create);
-                  toggleTaskModal();
-                }}
-              >
-                {taskList &&
-                  taskList
-                    .filter((task) => task.user === user._id)
-                    .filter((task) => !task.isDone)
-                    .map((task, index) => (
-                      <Task
-                        task={task}
-                        handleTaskEdit={() => {
-                          setContextTask(task);
-                          handleTaskEdit();
+      {/* User Boards section with draggable task cards*/}
+      <DragDropContext onDragEnd={onDragEnd}>
+        <Row>
+          {userList &&
+            userList.map((user, index) => (
+              <Col md='6' lg='4' xl='3' key={user._id + index}>
+                <Droppable droppableId={user._id}>
+                  {(provided, snapshot) => (
+                    <div ref={provided.innerRef} {...provided.droppableProps}>
+                      <UserBoard
+                        user={user}
+                        handleUserBoardDelete={handleUserBoardDelete}
+                        handleUserBoardEdit={handleUserBoardEdit}
+                        setContextUser={setContextUser}
+                        handleAddTask={() => {
+                          setContextTask((prev) => ({
+                            ...prev,
+                            user: user._id,
+                          }));
+                          setContextTaskActionType(actionTypes.create);
+                          toggleTaskModal();
                         }}
-                        handleTaskDelete={handleTaskDelete}
-                        toggleIsTaskDone={() => {
-                          //   setContextTask(task);
-                          toggleIsTaskDone(task);
-                        }}
-                        key={task._id + index}
-                      />
-                    ))}
-                <Row>
-                  <Col
-                    xs='2'
-                    style={{ fontSize: 'x-small' }}
-                    className='pr-0 mr-0 pt-2'
-                  >
-                    Done
-                  </Col>
-                  <Col xs='10' className='ml-0 pl-0'>
-                    <hr />
-                  </Col>
-                </Row>
-                {taskList &&
-                  taskList
-                    .filter((task) => task.user === user._id)
-                    .filter((task) => task.isDone)
-                    .map((task, index) => (
-                      <Task
-                        task={task}
-                        handleTaskEdit={() => {
-                          setContextTask(task);
-                          handleTaskEdit();
-                        }}
-                        handleTaskDelete={handleTaskDelete}
-                        toggleIsTaskDone={() => {
-                          //   setContextTask(task);
-                          toggleIsTaskDone(task);
-                        }}
-                        key={task._id + index}
-                      />
-                    ))}
-              </UserBoard>
-            </Col>
-          ))}
-      </Row>
+                      >
+                        {taskList &&
+                          taskList
+                            .filter((task) => task.user === user._id)
+                            .filter((task) => !task.isDone)
+                            .map((task, index) => (
+                              <Draggable
+                                key={task._id}
+                                draggableId={task._id}
+                                index={index}
+                              >
+                                {(provided) => (
+                                  <div
+                                    ref={provided.innerRef}
+                                    {...provided.draggableProps}
+                                    {...provided.dragHandleProps}
+                                  >
+                                    <Task
+                                      task={task}
+                                      handleTaskEdit={() => {
+                                        setContextTask(task);
+                                        handleTaskEdit();
+                                      }}
+                                      handleTaskDelete={handleTaskDelete}
+                                      toggleIsTaskDone={() => {
+                                        //   setContextTask(task);
+                                        toggleIsTaskDone(task);
+                                      }}
+                                    />
+                                    {provided.placeholder}
+                                  </div>
+                                )}
+                              </Draggable>
+                            ))}
+                        <Row>
+                          <Col
+                            xs='2'
+                            style={{ fontSize: 'x-small' }}
+                            className='pr-0 mr-0 pt-2'
+                          >
+                            Done
+                          </Col>
+                          <Col xs='10' className='ml-0 pl-0'>
+                            <hr />
+                          </Col>
+                        </Row>
+                        {taskList &&
+                          taskList
+                            .filter((task) => task.user === user._id)
+                            .filter((task) => task.isDone)
+                            .map((task, index) => (
+                              <Draggable
+                                key={task._id}
+                                draggableId={task._id}
+                                index={index}
+                              >
+                                {(provided, snapshot) => (
+                                  <div
+                                    ref={provided.innerRef}
+                                    {...provided.draggableProps}
+                                    {...provided.dragHandleProps}
+                                  >
+                                    <Task
+                                      task={task}
+                                      handleTaskEdit={() => {
+                                        setContextTask(task);
+                                        handleTaskEdit();
+                                      }}
+                                      handleTaskDelete={handleTaskDelete}
+                                      toggleIsTaskDone={() => {
+                                        //   setContextTask(task);
+                                        toggleIsTaskDone(task);
+                                      }}
+                                    />
+                                    {provided.placeholder}
+                                  </div>
+                                )}
+                              </Draggable>
+                            ))}
+                      </UserBoard>
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              </Col>
+            ))}
+        </Row>
+      </DragDropContext>
     </Container>
   );
 }
