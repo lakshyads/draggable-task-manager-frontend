@@ -1,0 +1,13 @@
+/* Add button which sticks to card center-bottom border */
+.card-add-btn {
+  width: 2.8em;
+  height: 2.8em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: -25px;
+  left: 40%;
+  /* left: 38%; */
+}

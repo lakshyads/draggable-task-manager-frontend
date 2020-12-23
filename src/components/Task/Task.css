@@ -1,0 +1,17 @@
+.task-card .card {
+  border: none;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.125) !important;
+  margin-bottom: 14px;
+}
+.task-card .card-body {
+  padding: 0.45rem;
+}
+
+.task-card .card-body .card-title {
+  margin-bottom: 0.15rem;
+  font-weight: 450;
+}
+
+.task-card .card-body .card-text {
+  font-size: small;
+}

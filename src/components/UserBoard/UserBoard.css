@@ -1,0 +1,26 @@
+/* Userboard card */
+
+.user-board-card {
+  margin-bottom: 4em;
+}
+.user-board-card > .card {
+  border: none;
+  min-height: 120px;
+}
+
+.user-board-card > .card > .card-body {
+  border: none;
+  padding: auto 12px;
+  padding-top: 12px;
+  background-color: #eff0eb;
+}
+
+.card-header:first-child {
+  border-radius: 0;
+}
+
+.board-edit-icon {
+  left: 5px;
+  top: 5px;
+  position: absolute;
+}
