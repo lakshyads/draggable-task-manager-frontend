@@ -29,14 +29,15 @@ Follow this link to my github repo [draggable-task-manager-backend](https://gith
 ---
 ## Screenshots
 
+#### Overview
 ![Overview](https://github.com/lakshyads/draggable-task-manager-frontend/blob/master/src/assets/img/overview.jpeg)
-
+#### Add User Board
 ![Add User](https://github.com/lakshyads/draggable-task-manager-frontend/blob/master/src/assets/img/addUser.jpeg)
-
+#### Add Task
 ![Add Task](https://github.com/lakshyads/draggable-task-manager-frontend/blob/master/src/assets/img/addTask.jpeg)
-
+#### Drag & Drop tasks across boards
 ![Drag & Drop](https://github.com/lakshyads/draggable-task-manager-frontend/blob/master/src/assets/img/dnd.jpeg)
-
+#### Delete User
 ![Delete User](https://github.com/lakshyads/draggable-task-manager-frontend/blob/master/src/assets/img/deleteUser.jpeg)
 
 ---
