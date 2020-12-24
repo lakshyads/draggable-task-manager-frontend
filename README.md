@@ -26,6 +26,13 @@ Follow this link to my github repo [draggable-task-manager-backend](https://gith
 - Preferred passing props as children (props.children) whereever possible
 - Fully functional drag and drop functionality for task cards
 - CRUD functionality for both User-boards as well as Task-Cards
+
+## This app uses following packages
+
+- [Reactstrap](https://www.npmjs.com/package/reactstrap) for stateless Bootstrap components
+- [react-beautiful-dnd](https://www.npmjs.com/package/react-beautiful-dnd) for smooth and accurate drag drop functionality
+- [Axios](https://www.npmjs.com/package/axios) A promise based HTTP cient
+- [react-fontawesome](https://www.npmjs.com/package/@fortawesome/react-fontawesome) Font Awesome 5 React component using SVG with JS
 ---
 ## Screenshots
 
