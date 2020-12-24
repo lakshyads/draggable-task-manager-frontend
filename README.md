@@ -12,7 +12,7 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### The App is configure to look for backend services on port 3002 by default. Fell free to modify it as per your will.
+### The App is configured to look for backend services on port 3002 by default. Fell free to modify it as per your will.
 # You will notice couple of errors in UI console. These errors persist due to a peer dependency and in no way will impact the useability of this app.
 ---
 ## Backend for this project
