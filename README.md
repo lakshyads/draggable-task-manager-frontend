@@ -29,15 +29,15 @@ Follow this link to my github repo [draggable-task-manager-backend](https://gith
 ---
 ## Screenshots
 
-![Overview](https://github.com/lakshyads/draggable-task-manager-frontend/tree/master/src/assets/img/overview.jpeg)
+![Overview](https://github.com/lakshyads/draggable-task-manager-frontend/blob/master/src/assets/img/overview.jpeg)
 
-![Add User](https://github.com/lakshyads/draggable-task-manager-frontend/tree/master/src/assets/img/addUser.jpeg)
+![Add User](https://github.com/lakshyads/draggable-task-manager-frontend/blob/master/src/assets/img/addUser.jpeg)
 
-![Add Task](https://github.com/lakshyads/draggable-task-manager-frontend/tree/master/src/assets/img/addTask.jpeg)
+![Add Task](https://github.com/lakshyads/draggable-task-manager-frontend/blob/master/src/assets/img/addTask.jpeg)
 
-![Drag & Drop](https://github.com/lakshyads/draggable-task-manager-frontend/tree/master/src/assets/img/dnd.jpeg)
+![Drag & Drop](https://github.com/lakshyads/draggable-task-manager-frontend/blob/master/src/assets/img/dnd.jpeg)
 
-![Delete User](https://github.com/lakshyads/draggable-task-manager-frontend/tree/master/src/assets/img/deleteUser.jpeg)
+![Delete User](https://github.com/lakshyads/draggable-task-manager-frontend/blob/master/src/assets/img/deleteUser.jpeg)
 
 ---
 ## Project structure
